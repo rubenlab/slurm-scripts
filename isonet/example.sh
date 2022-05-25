@@ -1,0 +1,1 @@
+/usr/users/rubsak/sw/isonet-container/isonet.sh -c ./config.sh /scratch1/projects/rubsak/${USER}/myproject/frames
