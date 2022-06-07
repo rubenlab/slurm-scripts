@@ -11,9 +11,12 @@
 # Default is 3.2G, increase total RAM with e.g. --mem 80G
 
 module purge
-module load rev/20.12 spack-user/0.16.0
-source $SPACK_USER_ROOT/share/spack/setup-env.sh
-spack load relion@4.0_beta
+#module load rev/20.12 spack-user/0.16.0
+#source $SPACK_USER_ROOT/share/spack/setup-env.sh
+#spack load relion@4.0_beta
+shopt -s expand_aliases
+source /usr/users/rubsak/sw/rubsak.bashrc
+use_relion4
   
 mpirun XXXcommandXXX
 

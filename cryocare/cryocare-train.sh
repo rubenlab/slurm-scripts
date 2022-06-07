@@ -14,8 +14,8 @@ module purge
 #module load cuda/10.2.89
 module load cuda/11.5.1
 #export KERAS_BACKEND=tensorflow  # NEEDED?
-
-#source ~/bin/rubsak.bashrc
+#shopt -s expand_aliases
+#source /usr/users/rubsak/sw/rubsak.bashrc
 #use_cryocare
 source /usr/users/rubsak/sw/conda/conda_rubsak.bash cryocare_c11
 
