@@ -21,7 +21,7 @@ OUTDIR=Output
 mkdir -v ${OUTDIR}
 
 # The number in the executable here (102) must correspond to the module version number above (10.2) 
-AreTomo_1.1.1_Cuda102_04-06-2022 \
+AreTomo_1.2.0_Cuda102_06-23-2022 \
 -InMrc micrograph_stack.mrc \
 -OutMrc ${OUTDIR}/reconstruction.mrc \
 -AngFile stack.rawtlt \
