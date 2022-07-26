@@ -16,9 +16,7 @@
 # mkdir -p $TMP_SCRATCH
 
 module purge
-#module load rev/20.12 spack-user/0.16.0
-#source $SPACK_USER_ROOT/share/spack/setup-env.sh
-#spack load relion@4.0_beta
+module load openmpi/4.1.1
 shopt -s expand_aliases
 source /usr/users/rubsak/sw/rubsak.bashrc
 use_relion4
