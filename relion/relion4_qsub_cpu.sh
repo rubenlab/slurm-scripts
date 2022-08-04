@@ -1,7 +1,7 @@
 #!/bin/bash -l                                                                                                                                             
 #SBATCH -D ./                                                                                                                                              
 #SBATCH -J Relion                                                                                                                                          
-#SBATCH -C local                                                                                                                                        
+#SBATCH -C scratch                                                                                                                                         
 #SBATCH --partition=XXXqueueXXX
 #SBATCH --error=XXXerrfileXXX
 #SBATCH --output=XXXoutfileXXX
