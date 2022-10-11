@@ -24,6 +24,7 @@ function which() {
 }
 
 echo "Executable: '`which relion_refine_mpi`'"
+echo -e "$(hostname) modules: $(module list 2>&1 | grep openmpi --color=never) \n"
 
 singularity exec --bind /scratch1/projects/rubsak --bind /local ${sif_path} mpirun XXXcommandXXX
 
