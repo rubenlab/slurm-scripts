@@ -25,7 +25,7 @@ function which() {
   echo "${sif_exe}"
 }
 
-echo -e "$(hostname) modules: $(module list 2>&1 | grep openmpi --color=never) \n"
+echo -e "$(hostname) modules: $(module list 2>&1 | grep singularity --color=never) \n"
 
 singularity exec --nv --bind /scratch1/projects/rubsak --bind /local ${sif_path} mpirun XXXcommandXXX
 
