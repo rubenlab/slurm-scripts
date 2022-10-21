@@ -16,11 +16,11 @@
 # mkdir -p $TMP_SCRATCH
 
 module purge
-module load openmpi/4.1.1
-shopt -s expand_aliases
-source /usr/users/rubsak/sw/rubsak.bashrc
-use_relion4
-echo -e "$(hostname) modules: $(module list 2>&1 | grep openmpi --color=never) \n"
+module load relion/4.0.0-cuda
+
+# Diagnostics
+ldd `which relion_refine_mpi` | grep psm2
+echo -e "$(hostname) modules: $(module list 2>&1 | grep relion --color=never) \n"
   
 mpirun XXXcommandXXX
 
