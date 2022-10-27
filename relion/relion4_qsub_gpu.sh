@@ -19,7 +19,7 @@ module purge
 module load relion/4.0.0-cuda
 
 # Diagnostics
-ldd `which relion_refine_mpi` | grep psm2
+#ldd `which relion_refine_mpi` | grep psm2
 echo -e "$(hostname) modules: $(module list 2>&1 | grep relion --color=never) \n"
   
 mpirun XXXcommandXXX

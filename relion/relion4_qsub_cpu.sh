@@ -11,11 +11,12 @@
 # Default is 3.2G, increase total RAM with e.g. --mem 80G
 
 module purge
-module load openmpi/4.1.1
-shopt -s expand_aliases
-source /usr/users/rubsak/sw/rubsak.bashrc
-use_relion4
-echo -e "$(hostname) modules: $(module list 2>&1 | grep openmpi --color=never) \n"
+#module load openmpi/4.1.1
+#shopt -s expand_aliases
+#source /usr/users/rubsak/sw/rubsak.bashrc
+#use_relion4
+load relion/4.0.0
+echo -e "$(hostname) modules: $(module list 2>&1 | grep relion --color=never) \n"
  
 mpirun XXXcommandXXX
 
