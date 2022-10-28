@@ -16,10 +16,10 @@
 # mkdir -p $TMP_SCRATCH
 
 module purge
-module load relion/4.0.0-cuda
-
-# Diagnostics
-#ldd `which relion_refine_mpi` | grep psm2
+shopt -s expand_aliases
+source /usr/users/rubsak/sw/rubsak.bashrc
+use_relion4
+#module load relion/4.0.0-cuda
 echo -e "$(hostname) modules: $(module list 2>&1 | grep relion --color=never) \n"
   
 mpirun XXXcommandXXX
