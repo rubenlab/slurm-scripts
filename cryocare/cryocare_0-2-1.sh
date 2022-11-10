@@ -5,7 +5,7 @@
 
 #SBATCH --partition=gpu
 #SBATCH --mem-per-cpu 6000 
-#SBATCH --gres=gpu:2
+#SBATCH -G rtx5000:2
 #SBATCH --time=05:00:00
 
 #SBATCH -o slurm-cryocare-%j.out
