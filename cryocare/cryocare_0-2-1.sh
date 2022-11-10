@@ -19,6 +19,9 @@ source /usr/users/rubsak/sw/conda/conda_rubsak.bash cryocare_0.2.1_c11
 
 module list
 echo "Conda evironment: $(basename $CONDA_DEFAULT_ENV)"
+echo "PYTHONPATH: '$PYTHONPATH'"
+echo "PYTHONHOME: '$PYTHONHOME'"
+echo
 
 cryoCARE_extract_train_data.py --conf train_data_config.json && \
 cryoCARE_train.py --conf train_config.json && \
