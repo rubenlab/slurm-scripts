@@ -18,7 +18,7 @@ module load cuda/10.2.89
 source /usr/users/rubsak/sw/conda/conda_rubsak.bash cryocare_0.2_c10_nokeras
 
 module list
-echo "Conda evironment: $(basename $CONDA_DEFAULT_ENV)"
+echo "Conda environment: $(basename $CONDA_DEFAULT_ENV)"
 echo "PYTHONPATH: '$PYTHONPATH'"
 echo "PYTHONHOME: '$PYTHONHOME'"
 echo
