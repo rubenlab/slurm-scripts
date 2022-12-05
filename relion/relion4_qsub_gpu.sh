@@ -1,7 +1,8 @@
 #!/bin/bash -l                                                                                                                                             
-#SBATCH -D ./                                                                                                                                              
-#SBATCH -J Relion                                                                                                                                          
-#SBATCH -C scratch                                                                                                                                         
+#SBATCH -D ./
+#SBATCH -J Relion
+#SBATCH -C scratch
+#SBATCH -C cascadelake 
 
 #SBATCH --partition=XXXqueueXXX
 #SBATCH --error=XXXerrfileXXX
