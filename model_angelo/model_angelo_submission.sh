@@ -12,7 +12,6 @@
 #SBATCH -e modelangelo-%j.err
 
 module purge
-module load cuda/11.2
 shopt -s expand_aliases
 source /usr/users/rubsak/sw/rubsak.bashrc
 use_modelangelo
