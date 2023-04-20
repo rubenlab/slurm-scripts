@@ -1,26 +1,39 @@
 #!/bin/bash -l
-#SBATCH -D ./
+#SBATCH -D ./ 
 #SBATCH -J MotionCor2
-#SBATCH -C scratch
-
+#SBATCH -C scratch 
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --mem-per-cpu 8000 
-#SBATCH --time=00:01:00
+#SBATCH --time=02:00:00 
+#SBATCH -o motioncor2-%j.out 
+#SBATCH -e motioncor2-%j.err 
 
-#SBATCH --output=slurm-motioncor2-%j.out
 
+# SETUP OF SOFTWARE ENVIRONMENT
 module purge
-module load cuda/11.2
+module load cuda/11.2 
 
-OUTDIR=Output
+# Create output directory for MotionCor2 files
+INEERS="frames/*.eer"
+OUTDIR="Motioncor2"
+LOGDIR="${OUTDIR}/Logs"
+GAINFILE="20230320_094613_EER_GainReference.mrc"
+FRAMEFILE="frames.txt"
 
-mkdir ${OUTDIR}
+mkdir -p ${LOGDIR}
 
-MotionCor2_1.4.4_Cuda112-08-11-2021 \
--InEer EER/ \
--FmIntFile motioncor-frames.txt \
--OutMrc ${OUTDIR}/ \
--LogFile ${OUTDIR}/ \
--Gain 20210917_110020_EER_GainReference.mrc \
--Kv 300 -PixSize 1.8897 -Throw 0 -OutStack 1 -Patch 5 5 -Iter 10 -Tol 0.5 -Serial 1 -SumRange 0 0 -FmRef 1 -Gpu 0
+# Run MotionCor2 (needs to be in your $PATH!)
+for fn in ${INEERS} ; do
+  stem_movie=$(basename ${fn} | rev | cut -d. -f2- | rev)
+  cor_mic="${OUTDIR}/${stem_movie}_mic.mrc"
+
+  MotionCor2_1.6.3_Cuda112_Feb18_2023 \
+    -InEer $fn \
+    -FmIntFile ${FRAMEFILE} \
+    -OutMrc $cor_mic \
+    -LogDir ${LOGDIR}/ \
+    -Gain ${GAINFILE} \
+    -Kv 300 -PixSize 1.89 -Throw 0 -OutStack 1 -Patch 5 5 -Iter 10 -Tol 0.5 -Serial 0 -EerSampling 1 -SumRange 0 0 -reffrm 1 -SplitSum 1 -FmRef 1 -Gpu 0 2> /dev/null
+
+done
+
