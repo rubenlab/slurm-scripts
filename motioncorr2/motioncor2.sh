@@ -5,6 +5,7 @@
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --time=02:00:00 
+#SBATCH --qos=short
 #SBATCH -o motioncor2-%j.out 
 #SBATCH -e motioncor2-%j.err 
 
@@ -13,27 +14,30 @@
 module purge
 module load cuda/11.2 
 
-# Create output directory for MotionCor2 files
+# Filenames & Parameters
 INEERS="frames/*.eer"
-OUTDIR="Motioncor2"
-LOGDIR="${OUTDIR}/Logs"
-GAINFILE="20230320_094613_EER_GainReference.mrc"
-FRAMEFILE="frames.txt"
+OUTDIR=Motioncor2 
+GAINFILE=20220228_092427_EER_GainReference.mrc
+FMFILE=motioncorr-frames.txt
+APIX=2.31
+LOGDIR=${OUTDIR}/Logs
 
 mkdir -p ${LOGDIR}
 
 # Run MotionCor2 (needs to be in your $PATH!)
 for fn in ${INEERS} ; do
+#  echo "fn $fn"
   stem_movie=$(basename ${fn} | rev | cut -d. -f2- | rev)
   cor_mic="${OUTDIR}/${stem_movie}_mic.mrc"
+#  echo "stem_movie $stem_movie"
 
-  MotionCor2_1.6.3_Cuda112_Feb18_2023 \
+  MotionCor2_1.6.5_Cuda112_Feb18_2023 \
     -InEer $fn \
-    -FmIntFile ${FRAMEFILE} \
+    -FmIntFile $FMFILE \
     -OutMrc $cor_mic \
     -LogDir ${LOGDIR}/ \
-    -Gain ${GAINFILE} \
-    -Kv 300 -PixSize 1.89 -Throw 0 -OutStack 1 -Patch 5 5 -Iter 10 -Tol 0.5 -Serial 0 -EerSampling 1 -SumRange 0 0 -reffrm 1 -SplitSum 1 -FmRef 1 -Gpu 0 2> /dev/null
+    -Gain $GAINFILE \
+    -Kv 300 -PixSize $APIX -Throw 0 -OutStack 1 -Patch 5 5 -Iter 10 -Tol 0.5 -Serial 0 -EerSampling 1 -SumRange 0 0 -reffrm 1 -SplitSum 1 -FmRef 1 -Gpu 0 2> /dev/null
 
 done
 
