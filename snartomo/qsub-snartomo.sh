@@ -3,7 +3,7 @@
 #SBATCH -J SNARTomo
 #SBATCH -C scratch
 #SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
+#SBATCH -G rtx5000:1
 #SBATCH --time=00:40:00
 #SBATCH --cpus-per-task=2
 # SBATCH --mem 8G
