@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash 
 #SBATCH -D ./
 #SBATCH -J crYOLO
 #SBATCH -C scratch

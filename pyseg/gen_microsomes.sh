@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash
 #SBATCH -D ./
 #SBATCH -J pyseg_test
 #SBATCH -C scratch

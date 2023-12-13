@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash 
 #SBATCH -D ./
 #SBATCH -J sp_window
 #SBATCH -C scratch

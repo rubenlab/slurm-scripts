@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash
 #SBATCH -D ./
 #SBATCH -J ModelAngelo
 #SBATCH -C scratch

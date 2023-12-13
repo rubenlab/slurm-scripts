@@ -1,4 +1,4 @@
-#!/bin/bash -l                                                                                                                                             
+#!/bin/bash 
 #SBATCH -D ./                                                                                                                                              
 #SBATCH -J relion_reconstruct
 #SBATCH -C scratch                                                                                                                                         
